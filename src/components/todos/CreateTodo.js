@@ -15,15 +15,22 @@ class CreateTodo extends Component {
   handleSubmit = event => {
     event.preventDefault();
     this.props.addTodo(this.state)
+
+    // Cleanup Todo Input
+    // reset the component's state each time the submit button is clicked
+    // this will cause the page to re-render, and update the value attribute of the input field, clearing out the content
+    this.setState({
+      text: ''
+    })
   }
-  
+
   render() {
-    return(
+    return (
       <div>
         <form onSubmit={this.handleSubmit}>
           <input
             type="text"
-            placeholder="add todo" 
+            placeholder="add todo"
             value={this.state.text}
             onChange={this.handleChange}
           />
